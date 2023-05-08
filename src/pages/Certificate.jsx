@@ -102,14 +102,17 @@ const Certificate = () => {
             />
             <button
               type="button"
-              class="text-white bg-c-gold hover:bg-c-gold2 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"
+              class="text-white bg-c-gold hover:bg-c-gold2 focus:ring-4 focus:ring-c-gold font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"
               onClick={HandleButtonClick}
             >
               Download PDF
             </button>
           </div>
         </div>
-        <div className="xl:col-span-7 flex items-center" id="certificate">
+        <div
+          className="w-[1057px] h-[650px] xl:w-full xl:h-full xl:col-span-7 flex items-center"
+          id="certificate"
+        >
           <div className="flex flex-col justify-center items-center">
             <img src="/assets/design.png" />
             <div className="flex flex-col items-center gap-5 w-4/5">
