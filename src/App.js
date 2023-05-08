@@ -3,7 +3,7 @@ import Certificate from "./pages/Certificate";
 
 const App = () => {
   return (
-    <div>
+    <div className="bg-gray-50">
       <Certificate />
     </div>
   );

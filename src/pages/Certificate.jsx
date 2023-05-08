@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CustomInput from "../components/CustomInput";
 
 const html2pdf = require("html2pdf.js/dist/html2pdf.js");
@@ -6,13 +6,17 @@ const html2pdf = require("html2pdf.js/dist/html2pdf.js");
 const Certificate = () => {
   const [formState, setFormState] = useState({
     logo: undefined,
+    logow: 0,
     title: "CERTIFICATE OF COMPLETION",
     sub: "INGRID M. MATHIS",
     reason: "for completing Speed of Trust",
-    facilitator: "HOWARD ONG",
-    facilitatorName: "Course Facilitator",
-    president: "College President",
-    presidentName: "BIANCA DELA RIO",
+    issuing: "HOWARD ONG",
+    issuingName: "Course Issuing",
+    authority: "College Authority",
+    authorityName: "BIANCA DELA RIO",
+    watermark: undefined,
+    watermarkW: 0,
+    watermarkO: 0,
   });
 
   const handleInputChange = (event) => {
@@ -38,17 +42,20 @@ const Certificate = () => {
   };
 
   return (
-    <div className="font-rubikfont">
+    <div>
       <section className="grid xl:grid-cols-9 px-1">
         <div className="xl:col-span-2 pt-4 border-r-[1px] overflow-y-auto xl:min-w-[310px] col-span-9 min-w-full">
-          <h4 className="font-semibold text-center text-gray-700 underline">
-            Certificate Inputs
-          </h4>
           <div className="m-4 flex flex-col gap-4">
             <CustomInput
               label="Logo"
               type="file"
               name="logo"
+              onChange={handleInputChange}
+            />
+            <CustomInput
+              label="Logo Sizes (width)"
+              type="number"
+              name="logow"
               onChange={handleInputChange}
             />
             <CustomInput
@@ -73,82 +80,148 @@ const Certificate = () => {
               onChange={handleInputChange}
             />
             <CustomInput
-              label="Facilitator"
+              label="Issuing"
               type="text"
-              name="facilitator"
-              value={formState.facilitator}
+              name="issuing"
+              value={formState.issuing}
               onChange={handleInputChange}
             />
             <CustomInput
-              label="Facilitator Name"
+              label="Issuing Name"
               type="text"
-              name="facilitatorName"
-              value={formState.facilitatorName}
+              name="issuingName"
+              value={formState.issuingName}
               onChange={handleInputChange}
             />
             <CustomInput
-              label="President"
+              label="Authority"
               type="text"
-              name="president"
-              value={formState.president}
+              name="authority"
+              value={formState.authority}
               onChange={handleInputChange}
             />
             <CustomInput
-              label="President Name"
+              label="Authority Name"
               type="text"
-              name="presidentName"
-              value={formState.presidentName}
+              name="authorityName"
+              value={formState.authorityName}
               onChange={handleInputChange}
             />
+            <CustomInput
+              label="Watermark"
+              type="file"
+              name="watermark"
+              onChange={handleInputChange}
+            />
+            <div className="flex gap-4">
+              <CustomInput
+                label="Watermark Sizes"
+                type="number"
+                name="watermarkW"
+                onChange={handleInputChange}
+              />
+              <CustomInput
+                label="Opacity"
+                type="number"
+                name="watermarkO"
+                onChange={handleInputChange}
+              />
+            </div>
             <button
               type="button"
-              class="text-white bg-c-gold hover:bg-c-gold2 focus:ring-4 focus:ring-c-gold font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"
+              className="text-white bg-c-gold hover:bg-c-gold2 focus:ring-4 focus:ring-c-gold font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"
               onClick={HandleButtonClick}
             >
               Download PDF
             </button>
           </div>
         </div>
-        <div
-          className="w-[1057px] h-[650px] xl:w-full xl:h-full xl:col-span-7 flex items-center"
-          id="certificate"
-        >
-          <div className="flex flex-col justify-center items-center">
-            <img src="/assets/design.png" />
-            <div className="flex flex-col items-center gap-5 w-4/5">
+        <div className="w-full h-full flex justify-center mt-6 col-span-7">
+          <div
+            className="bg-white w-[778px] h-[602px] min-w-[778px] min-h-[602px] xl:col-span-7 flex items-center justify-center"
+            id="certificate"
+            style={{
+              position: "relative",
+              zIndex: "10",
+            }}
+          >
+            <div
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                backgroundImage: `url(${formState.watermark})`,
+                backgroundPosition: "center",
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
+                opacity: `${formState.watermarkO / 100}`,
+                width: `${Math.min(formState.watermarkW, 100)}%`,
+                height: `${Math.min(formState.watermarkW, 100)}%`,
+              }}
+            ></div>
+            <div className="flex flex-col justify-center items-center z-20">
+              {/* Top */}
               <img
-                src={formState.logo}
-                alt="logo img"
-                className="w-40 h-40 rounded-full mt-8"
+                src="/assets/design.png"
+                alt="top design"
+                className="mb-10"
               />
-              <h4 className="text-c-gold text-2xl">{formState.title}</h4>
-              <p className="text-c-gray italic">This is presented to</p>
-              <h5 className="text-7xl text-c-gold text-center">
-                {formState.sub}
-              </h5>
-              <p className="text-xl text-c-gray ">{formState.reason}</p>
-              <div className="flex justify-between w-full mt-10">
-                <div className="flex flex-col items-center">
-                  <span className="border-t-2 border-gray-500 w-64"></span>
-                  <p className="text-lg text-c-gold">
-                    {formState.facilitatorName}
-                  </p>
-                  <h4 className="text-base text-c-gray">
-                    {formState.facilitator}
-                  </h4>
+              {/* Middle  */}
+              <div className="flex flex-col items-center gap-5 w-4/5">
+                <img
+                  src={formState.logo}
+                  alt="logo img"
+                  style={{
+                    width: formState.logow
+                      ? `${Math.min(Math.max(formState.logow, 1), 100)}%`
+                      : "40%",
+                    borderRadius: "50%",
+                    marginTop: "8px",
+                  }}
+                />
+                <h4 className="text-c-gold text-2xl font-cinzel">
+                  {formState.title}
+                </h4>
+                <p className="text-c-gray italic font-lora">
+                  This is presented to
+                </p>
+                <h5 className="text-6xl text-c-gold text-center font-cinzel">
+                  {formState.sub}
+                </h5>
+                <p className="text-xl text-c-gray font-lora">
+                  {formState.reason}
+                </p>
+              </div>
+              {/* bottom */}
+              <div className="mx-4 mt-8 flex flex-col items-center ">
+                <div className="flex justify-between w-[80%] mt-10">
+                  <div className="flex flex-col items-center">
+                    <span className="border-t-2 border-gray-500 w-64"></span>
+                    <p className="text-lg text-c-gold font-cinzel">
+                      {formState.issuingName}
+                    </p>
+                    <h4 className="text-base text-c-gray font-lora">
+                      {formState.issuing}
+                    </h4>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <span className="border-t-2 border-gray-500 w-64"></span>
+                    <p className="text-lg text-c-gold font-cinzel">
+                      {formState.authorityName}
+                    </p>
+                    <h4 className="text-base text-c-gray font-lora">
+                      {formState.authority}
+                    </h4>
+                  </div>
                 </div>
-                <div className="flex flex-col items-center">
-                  <span className="border-t-2 border-gray-500 w-64"></span>
-                  <p className="text-lg text-c-gold">
-                    {formState.presidentName}
-                  </p>
-                  <h4 className="text-base text-c-gray">
-                    {formState.president}
-                  </h4>
-                </div>
+                <img
+                  src="/assets/design.png"
+                  alt="bottom design"
+                  className="rotate-180"
+                />
               </div>
             </div>
-            <img src="/assets/design.png" className="rotate-180" />
           </div>
         </div>
       </section>

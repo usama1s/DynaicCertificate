@@ -10,7 +10,8 @@ module.exports = {
       },
     },
     fontFamily: {
-      rubikfont: ["Rubik", "sans-serif"],
+      lora: ["Lora", "serif"],
+      cinzel: ["Cinzel", "serif"],
     },
   },
   plugins: [],
