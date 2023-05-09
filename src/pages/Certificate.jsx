@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CustomInput from "../components/CustomInput";
+import TextAreaInput from "../components/TextAreaInput";
 import DeafultLogo from "../logo.svg";
-import TextAreaInput from "./TextAreaInput";
 const html2pdf = require("html2pdf.js/dist/html2pdf.js");
 
 const Certificate = () => {
@@ -50,7 +50,7 @@ const Certificate = () => {
   return (
     <div>
       <section className="grid xl:grid-cols-9 px-1">
-        <div className="xl:col-span-2 pt-4 border-r-[1px] overflow-y-auto xl:min-w-[310px] col-span-9 min-w-full">
+        <div className="xl:col-span-2 pt-4 border-r-[1px] overflow-y-auto xl:min-w-[310px] col-span-9 min-w-full bg-gray-50">
           <div className="m-4 flex flex-col gap-4">
             <CustomInput
               label="Logo"
