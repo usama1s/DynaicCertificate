@@ -20,7 +20,7 @@ const CustomInput = ({
 
   return (
     <div className="relative">
-      <label class="block mb-1 text-sm font-medium text-gray-900">
+      <label className="block mb-1 text-sm font-medium text-gray-900">
         {label}
       </label>
       <input

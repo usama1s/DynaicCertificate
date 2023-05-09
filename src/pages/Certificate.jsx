@@ -33,22 +33,18 @@ const Certificate = () => {
 
   const HandleButtonClick = () => {
     const element = document.getElementById("certificate");
-    // element.style.width = "962px";
-    // element.style.height = "860px";
+
     const opt = {
       margin: 0,
       html2canvas: { x: 0 },
-      jsPDF: { unit: "px", format: [962, 860], orientation: "landscape" },
+      jsPDF: { unit: "px", format: [1295, 920], orientation: "landscape" },
       fileName: pdfName,
     };
     html2pdf()
       .set(opt)
       .from(element)
       .save(opt.fileName)
-      .then(() => {
-        // element.style.width = "";
-        // element.style.height = "";
-      });
+      .then(() => {});
   };
 
   return (
