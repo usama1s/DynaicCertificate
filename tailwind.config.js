@@ -12,6 +12,7 @@ module.exports = {
     fontFamily: {
       lora: ["Lora", "serif"],
       cinzel: ["Cinzel", "serif"],
+      jonathan: ["JONATHAN"],
     },
   },
   plugins: [],
