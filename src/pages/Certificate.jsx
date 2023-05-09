@@ -226,17 +226,17 @@ const Certificate = () => {
               </div>
               {/* bottom */}
               {/* <div className="mx-4 mt-8 flex flex-col items-center "> */}
-              <div className="flex justify-between w-full mt-10">
-                <div className="flex flex-col items-center">
+              <div className="flex justify-between  w-full mt-10">
+                <div className="flex flex-col gap-2 items-center">
                   <p
                     className="text-3xl text-c-gold font-jonathan"
                     dangerouslySetInnerHTML={{
                       __html: formState.Signature1.replace(/\n/g, "<br>"),
                     }}
                   ></p>
-                  <span className="border-t-2 border-gray-500 w-64"></span>
+                  <span className="border-b-2 border-gray-500 w-64 h-3"></span>
                   <p
-                    className="text-lg text-c-gold font-cinzel"
+                    className="text-lg text-c-gold font-cinzel -mb-2"
                     dangerouslySetInnerHTML={{
                       __html: formState.issuingName.replace(/\n/g, "<br>"),
                     }}
@@ -248,16 +248,16 @@ const Certificate = () => {
                     }}
                   ></h4>
                 </div>
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col gap-2 items-center">
                   <p
                     className="text-3xl text-c-gold font-jonathan"
                     dangerouslySetInnerHTML={{
                       __html: formState.Signature2.replace(/\n/g, "<br>"),
                     }}
                   ></p>
-                  <span className="border-t-2 border-gray-500 w-64"></span>
+                  <span className="border-b-2 border-gray-500 w-64 h-3"></span>
                   <p
-                    className="text-lg text-c-gold font-cinzel"
+                    className="text-lg text-c-gold font-cinzel -mb-2"
                     dangerouslySetInnerHTML={{
                       __html: formState.authorityName.replace(/\n/g, "<br>"),
                     }}
