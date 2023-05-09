@@ -183,15 +183,15 @@ const Certificate = () => {
                 height: `${Math.min(formState.watermarkW, 100)}%`,
               }}
             ></div> */}
-            <div className="flex flex-col justify-center items-center z-20">
+            <div className="flex flex-col justify-center items-center z-20 w-full pt-0 px-[100px]">
               {/* Top */}
               <img
                 src="/assets/design.png"
                 alt="top design"
-                className="mb-10"
+                className="absolute top-[40px] "
               />
               {/* Middle  */}
-              <div className="flex flex-col items-center gap-5 w-4/5">
+              <div className="flex flex-col items-center gap-5 w-full">
                 <div className="w-20 h-20">
                   <img
                     src={formState.logo}
@@ -222,64 +222,64 @@ const Certificate = () => {
                   }}
                 ></h5>
                 <p
-                  className="text-xl text-c-gray font-lora"
+                  className="text-xl text-center text-c-gray font-lora"
                   dangerouslySetInnerHTML={{
                     __html: formState.reason.replace(/\n/g, "<br>"),
                   }}
                 ></p>
               </div>
               {/* bottom */}
-              <div className="mx-4 mt-8 flex flex-col items-center ">
-                <div className="flex justify-between w-[80%] mt-10">
-                  <div className="flex flex-col items-center">
-                    <p
-                      className="text-3xl text-c-gold font-jonathan"
-                      dangerouslySetInnerHTML={{
-                        __html: formState.Signature1.replace(/\n/g, "<br>"),
-                      }}
-                    ></p>
-                    <span className="border-t-2 border-gray-500 w-64"></span>
-                    <p
-                      className="text-lg text-c-gold font-cinzel"
-                      dangerouslySetInnerHTML={{
-                        __html: formState.issuingName.replace(/\n/g, "<br>"),
-                      }}
-                    ></p>
-                    <h4
-                      className="text-base text-c-gray font-lora"
-                      dangerouslySetInnerHTML={{
-                        __html: formState.issuing.replace(/\n/g, "<br>"),
-                      }}
-                    ></h4>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <p
-                      className="text-3xl text-c-gold font-jonathan"
-                      dangerouslySetInnerHTML={{
-                        __html: formState.Signature2.replace(/\n/g, "<br>"),
-                      }}
-                    ></p>
-                    <span className="border-t-2 border-gray-500 w-64"></span>
-                    <p
-                      className="text-lg text-c-gold font-cinzel"
-                      dangerouslySetInnerHTML={{
-                        __html: formState.authorityName.replace(/\n/g, "<br>"),
-                      }}
-                    ></p>
-                    <h4
-                      className="text-base text-c-gray font-lora"
-                      dangerouslySetInnerHTML={{
-                        __html: formState.authority.replace(/\n/g, "<br>"),
-                      }}
-                    ></h4>
-                  </div>
+              {/* <div className="mx-4 mt-8 flex flex-col items-center "> */}
+              <div className="flex justify-between w-full mt-10">
+                <div className="flex flex-col items-center">
+                  <p
+                    className="text-3xl text-c-gold font-jonathan"
+                    dangerouslySetInnerHTML={{
+                      __html: formState.Signature1.replace(/\n/g, "<br>"),
+                    }}
+                  ></p>
+                  <span className="border-t-2 border-gray-500 w-64"></span>
+                  <p
+                    className="text-lg text-c-gold font-cinzel"
+                    dangerouslySetInnerHTML={{
+                      __html: formState.issuingName.replace(/\n/g, "<br>"),
+                    }}
+                  ></p>
+                  <h4
+                    className="text-base text-c-gray font-lora"
+                    dangerouslySetInnerHTML={{
+                      __html: formState.issuing.replace(/\n/g, "<br>"),
+                    }}
+                  ></h4>
                 </div>
-                <img
-                  src="/assets/design.png"
-                  alt="bottom design"
-                  className="rotate-180"
-                />
+                <div className="flex flex-col items-center">
+                  <p
+                    className="text-3xl text-c-gold font-jonathan"
+                    dangerouslySetInnerHTML={{
+                      __html: formState.Signature2.replace(/\n/g, "<br>"),
+                    }}
+                  ></p>
+                  <span className="border-t-2 border-gray-500 w-64"></span>
+                  <p
+                    className="text-lg text-c-gold font-cinzel"
+                    dangerouslySetInnerHTML={{
+                      __html: formState.authorityName.replace(/\n/g, "<br>"),
+                    }}
+                  ></p>
+                  <h4
+                    className="text-base text-c-gray font-lora"
+                    dangerouslySetInnerHTML={{
+                      __html: formState.authority.replace(/\n/g, "<br>"),
+                    }}
+                  ></h4>
+                </div>
               </div>
+              {/* </div> */}
+              <img
+                src="/assets/design.png"
+                alt="bottom design"
+                className="rotate-180 absolute bottom-[40px]"
+              />
             </div>
           </div>
         </div>
