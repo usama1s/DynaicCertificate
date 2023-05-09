@@ -38,7 +38,6 @@ const Certificate = () => {
       margin: 0,
       html2canvas: { x: 0 },
       jsPDF: { unit: "px", format: [1295, 920], orientation: "landscape" },
-      fileName: pdfName,
     };
     html2pdf()
       .set(opt)
@@ -229,7 +228,7 @@ const Certificate = () => {
               <div className="flex justify-between  w-full mt-10">
                 <div className="flex flex-col gap-2 items-center">
                   <p
-                    className="text-3xl text-c-gold font-jonathan"
+                    className="text-5xl text-c-gold font-jonathan"
                     dangerouslySetInnerHTML={{
                       __html: formState.Signature1.replace(/\n/g, "<br>"),
                     }}
@@ -250,7 +249,7 @@ const Certificate = () => {
                 </div>
                 <div className="flex flex-col gap-2 items-center">
                   <p
-                    className="text-3xl text-c-gold font-jonathan"
+                    className="text-5xl text-c-gold font-jonathan"
                     dangerouslySetInnerHTML={{
                       __html: formState.Signature2.replace(/\n/g, "<br>"),
                     }}
