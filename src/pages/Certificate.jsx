@@ -33,17 +33,22 @@ const Certificate = () => {
 
   const HandleButtonClick = () => {
     const element = document.getElementById("certificate");
+    // element.style.width = "962px";
+    // element.style.height = "860px";
     const opt = {
-      margin: 4,
-      html2canvas: { x: 0, windowWidth: 850 },
-      jsPDF: { format: "letter", orientation: "landscape" },
+      margin: 0,
+      html2canvas: { x: 0 },
+      jsPDF: { unit: "px", format: [962, 860], orientation: "landscape" },
       fileName: pdfName,
     };
     html2pdf()
       .set(opt)
       .from(element)
       .save(opt.fileName)
-      .then(() => {});
+      .then(() => {
+        // element.style.width = "";
+        // element.style.height = "";
+      });
   };
 
   return (
@@ -99,6 +104,13 @@ const Certificate = () => {
               onChange={handleInputChange}
             />
             <TextAreaInput
+              label="Issuing Signature"
+              type="text"
+              name="Signature1"
+              value={formState.Signature1}
+              onChange={handleInputChange}
+            />
+            <TextAreaInput
               label="Authority"
               type="text"
               name="authority"
@@ -110,6 +122,13 @@ const Certificate = () => {
               type="text"
               name="authorityName"
               value={formState.authorityName}
+              onChange={handleInputChange}
+            />
+            <TextAreaInput
+              label="Authority Signature"
+              type="text"
+              name="Signature2"
+              value={formState.Signature2}
               onChange={handleInputChange}
             />
             {/* <CustomInput
@@ -134,20 +153,7 @@ const Certificate = () => {
                 onChange={handleInputChange}
               />
             </div> */}
-            <TextAreaInput
-              label="1st Signature"
-              type="text"
-              name="Signature1"
-              value={formState.Signature1}
-              onChange={handleInputChange}
-            />
-            <TextAreaInput
-              label="2nd Signature"
-              type="text"
-              name="Signature2"
-              value={formState.Signature2}
-              onChange={handleInputChange}
-            />
+
             <button
               type="button"
               className="text-white bg-c-gold hover:bg-c-gold2 focus:ring-4 focus:ring-c-gold font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"
@@ -157,9 +163,9 @@ const Certificate = () => {
             </button>
           </div>
         </div>
-        <div className="w-full h-full flex justify-center mt-9 col-span-7">
+        <div className=" flex justify-center mt-9 col-span-7">
           <div
-            className="bg-white w-[778px] h-[640px] min-w-[778px] min-h-[640px] xl:col-span-7 flex items-center justify-center relative z-10"
+            className="bg-white w-[962px] h-[680px] min-w-[962px] min-h-[680px]  xl:col-span-7 flex items-center justify-center relative z-10"
             id="certificate"
           >
             {/* <div
@@ -200,45 +206,72 @@ const Certificate = () => {
                     // }}
                   />
                 </div>
-                <h4 className="text-c-gold text-2xl font-cinzel">
-                  {formState.title}
-                </h4>
+                <h4
+                  className="text-c-gold text-2xl font-cinzel"
+                  dangerouslySetInnerHTML={{
+                    __html: formState.title.replace(/\n/g, "<br>"),
+                  }}
+                ></h4>
                 <p className="text-c-gray italic font-lora">
                   This is presented to
                 </p>
-                <h5 className="text-6xl text-c-gold text-center font-cinzel">
-                  {formState.sub}
-                </h5>
-                <p className="text-xl text-c-gray font-lora">
-                  {formState.reason}
-                </p>
+                <h5
+                  className="text-6xl text-c-gold text-center font-cinzel"
+                  dangerouslySetInnerHTML={{
+                    __html: formState.sub.replace(/\n/g, "<br>"),
+                  }}
+                ></h5>
+                <p
+                  className="text-xl text-c-gray font-lora"
+                  dangerouslySetInnerHTML={{
+                    __html: formState.reason.replace(/\n/g, "<br>"),
+                  }}
+                ></p>
               </div>
               {/* bottom */}
               <div className="mx-4 mt-8 flex flex-col items-center ">
                 <div className="flex justify-between w-[80%] mt-10">
                   <div className="flex flex-col items-center">
-                    <p className="text-3xl text-c-gold font-jonathan">
-                      {formState.Signature1}
-                    </p>
+                    <p
+                      className="text-3xl text-c-gold font-jonathan"
+                      dangerouslySetInnerHTML={{
+                        __html: formState.Signature1.replace(/\n/g, "<br>"),
+                      }}
+                    ></p>
                     <span className="border-t-2 border-gray-500 w-64"></span>
-                    <p className="text-lg text-c-gold font-cinzel">
-                      {formState.issuingName}
-                    </p>
-                    <h4 className="text-base text-c-gray font-lora">
-                      {formState.issuing}
-                    </h4>
+                    <p
+                      className="text-lg text-c-gold font-cinzel"
+                      dangerouslySetInnerHTML={{
+                        __html: formState.issuingName.replace(/\n/g, "<br>"),
+                      }}
+                    ></p>
+                    <h4
+                      className="text-base text-c-gray font-lora"
+                      dangerouslySetInnerHTML={{
+                        __html: formState.issuing.replace(/\n/g, "<br>"),
+                      }}
+                    ></h4>
                   </div>
                   <div className="flex flex-col items-center">
-                    <p className="text-3xl text-c-gold font-jonathan">
-                      {formState.Signature2}
-                    </p>
+                    <p
+                      className="text-3xl text-c-gold font-jonathan"
+                      dangerouslySetInnerHTML={{
+                        __html: formState.Signature2.replace(/\n/g, "<br>"),
+                      }}
+                    ></p>
                     <span className="border-t-2 border-gray-500 w-64"></span>
-                    <p className="text-lg text-c-gold font-cinzel">
-                      {formState.authorityName}
-                    </p>
-                    <h4 className="text-base text-c-gray font-lora">
-                      {formState.authority}
-                    </h4>
+                    <p
+                      className="text-lg text-c-gold font-cinzel"
+                      dangerouslySetInnerHTML={{
+                        __html: formState.authorityName.replace(/\n/g, "<br>"),
+                      }}
+                    ></p>
+                    <h4
+                      className="text-base text-c-gray font-lora"
+                      dangerouslySetInnerHTML={{
+                        __html: formState.authority.replace(/\n/g, "<br>"),
+                      }}
+                    ></h4>
                   </div>
                 </div>
                 <img
