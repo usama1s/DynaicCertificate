@@ -77,7 +77,7 @@ const Certificate = () => {
         onClick={() => {
           toggleSideBar();
         }}
-        className="lg:hidden block"
+        className="lg:hidden block h-10 w-10 pt-2 pl-2 cursor-pointer"
       />
 
       <section className="flex flex-row px-1 relative w-full">
@@ -85,7 +85,7 @@ const Certificate = () => {
           <div
             className={`${
               sidebar ? "block" : "hidden "
-            }border-r-[1px] max-w-[310px] lg:relative bg-gray-50 max-h-[100vh] z-[100] absolute top-0 left-0 overflow-y-hidden overflow-x-hidden`}
+            } origin-top-left scale-150 lg:scale-[1] border-r-[1px] max-w-[310px] lg:relative bg-gray-50 max-h-screen min-h-screen z-[100] absolute top-0 left-0 overflow-x-hidden`}
           >
             <div className="m-4 flex flex-col gap-4">
               <CustomInput
@@ -196,7 +196,7 @@ const Certificate = () => {
             </div>
           </div>
         )}
-        <div className="flex justify-center mt-9">
+        <div className="flex justify-center mt-9 w-full">
           <div
             className="bg-white w-[962px] h-[680px] min-w-[962px] min-h-[680px]  xl:col-span-7 flex items-center justify-center relative z-10"
             id="certificate"
