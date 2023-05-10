@@ -48,8 +48,8 @@ const Certificate = () => {
 
   return (
     <div>
-      <section className="grid xl:grid-cols-9 px-1">
-        <div className="xl:col-span-2 pt-4 border-r-[1px] overflow-y-auto xl:min-w-[310px] col-span-9 min-w-full bg-gray-50">
+      <section className="flex flex-row px-1 relative">
+        <div className=" border-r-[1px] overflow-y-auto min-w-[310px] lg:relative bg-gray-50 max-h-[100vh] z-[100] absolute top-0 left-0">
           <div className="m-4 flex flex-col gap-4">
             <CustomInput
               label="Logo"
@@ -158,7 +158,7 @@ const Certificate = () => {
             </button>
           </div>
         </div>
-        <div className=" flex justify-center mt-9 col-span-7">
+        <div className="flex justify-center mt-9">
           <div
             className="bg-white w-[962px] h-[680px] min-w-[962px] min-h-[680px]  xl:col-span-7 flex items-center justify-center relative z-10"
             id="certificate"
