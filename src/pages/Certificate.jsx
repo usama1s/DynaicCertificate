@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CustomInput from "../components/CustomInput";
 import TextAreaInput from "../components/TextAreaInput";
 import DeafultLogo from "../logo.svg";
+import { GiHamburgerMenu } from "react-icons/gi";
 const html2pdf = require("html2pdf.js/dist/html2pdf.js");
 
 const Certificate = () => {
@@ -21,6 +22,8 @@ const Certificate = () => {
     Signature1: "",
     Signature2: "",
   });
+
+  const [sidebar, setSidebar] = useState(true);
 
   const handleInputChange = (event) => {
     const { name, value, type } = event.target;
@@ -46,87 +49,100 @@ const Certificate = () => {
       .then(() => {});
   };
 
+  const toggleSideBar = () => {
+    setSidebar(!sidebar);
+  };
+
   return (
     <div>
-      <section className="flex flex-row px-1 relative">
-        <div className=" border-r-[1px] overflow-y-auto min-w-[310px] lg:relative bg-gray-50 max-h-[100vh] z-[100] absolute top-0 left-0">
-          <div className="m-4 flex flex-col gap-4">
-            <CustomInput
-              label="Logo"
-              type="file"
-              name="logo"
-              onChange={handleInputChange}
-            />
-            {/* <CustomInput
+      <GiHamburgerMenu
+        onClick={() => {
+          toggleSideBar();
+        }}
+        className="lg:hidden block"
+      />
+
+      <section className="flex flex-row px-1 relative w-full">
+        <div className={`md:block ${sidebar ? "block" : "hidden"}`}>
+          {sidebar && (
+            <div className="border-r-[1px] max-w-[310px] lg:relative bg-gray-50 max-h-[100vh] z-[100] absolute top-0 left-0 overflow-y-hidden overflow-x-hidden">
+              <div className="m-4 flex flex-col gap-4">
+                <CustomInput
+                  label="Logo"
+                  type="file"
+                  name="logo"
+                  onChange={handleInputChange}
+                />
+                {/* <CustomInput
               label="Logo Sizes (width)"
               type="number"
               name="logow"
               onChange={handleInputChange}
             /> */}
-            <TextAreaInput
-              label="Title"
-              type="text"
-              name="title"
-              value={formState.title}
-              onChange={handleInputChange}
-            />
-            <TextAreaInput
-              label="Subject"
-              type="text"
-              name="sub"
-              value={formState.sub}
-              onChange={handleInputChange}
-            />
-            <TextAreaInput
-              label="Reason"
-              type="text"
-              name="reason"
-              value={formState.reason}
-              onChange={handleInputChange}
-            />
-            <TextAreaInput
-              label="Issuing"
-              type="text"
-              name="issuing"
-              value={formState.issuing}
-              onChange={handleInputChange}
-            />
-            <TextAreaInput
-              label="Issuing Name"
-              type="text"
-              name="issuingName"
-              value={formState.issuingName}
-              onChange={handleInputChange}
-            />
-            <TextAreaInput
-              label="Issuing Signature"
-              type="text"
-              name="Signature1"
-              value={formState.Signature1}
-              onChange={handleInputChange}
-            />
-            <TextAreaInput
-              label="Authority"
-              type="text"
-              name="authority"
-              value={formState.authority}
-              onChange={handleInputChange}
-            />
-            <TextAreaInput
-              label="Authority Name"
-              type="text"
-              name="authorityName"
-              value={formState.authorityName}
-              onChange={handleInputChange}
-            />
-            <TextAreaInput
-              label="Authority Signature"
-              type="text"
-              name="Signature2"
-              value={formState.Signature2}
-              onChange={handleInputChange}
-            />
-            {/* <CustomInput
+                <TextAreaInput
+                  label="Title"
+                  type="text"
+                  name="title"
+                  value={formState.title}
+                  onChange={handleInputChange}
+                />
+                <TextAreaInput
+                  label="Subject"
+                  type="text"
+                  name="sub"
+                  value={formState.sub}
+                  onChange={handleInputChange}
+                />
+                <TextAreaInput
+                  label="Reason"
+                  type="text"
+                  name="reason"
+                  value={formState.reason}
+                  onChange={handleInputChange}
+                />
+                <TextAreaInput
+                  label="Issuing"
+                  type="text"
+                  name="issuing"
+                  value={formState.issuing}
+                  onChange={handleInputChange}
+                />
+                <TextAreaInput
+                  label="Issuing Name"
+                  type="text"
+                  name="issuingName"
+                  value={formState.issuingName}
+                  onChange={handleInputChange}
+                />
+                <TextAreaInput
+                  label="Issuing Signature"
+                  type="text"
+                  name="Signature1"
+                  value={formState.Signature1}
+                  onChange={handleInputChange}
+                />
+                <TextAreaInput
+                  label="Authority"
+                  type="text"
+                  name="authority"
+                  value={formState.authority}
+                  onChange={handleInputChange}
+                />
+                <TextAreaInput
+                  label="Authority Name"
+                  type="text"
+                  name="authorityName"
+                  value={formState.authorityName}
+                  onChange={handleInputChange}
+                />
+                <TextAreaInput
+                  label="Authority Signature"
+                  type="text"
+                  name="Signature2"
+                  value={formState.Signature2}
+                  onChange={handleInputChange}
+                />
+                {/* <CustomInput
               label="Watermark"
               type="file"
               name="watermark"
@@ -149,14 +165,16 @@ const Certificate = () => {
               />
             </div> */}
 
-            <button
-              type="button"
-              className="text-white bg-c-gold hover:bg-c-gold2 focus:ring-4 focus:ring-c-gold font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"
-              onClick={HandleButtonClick}
-            >
-              Download PDF
-            </button>
-          </div>
+                <button
+                  type="button"
+                  className="text-white bg-c-gold hover:bg-c-gold2 focus:ring-4 focus:ring-c-gold font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"
+                  onClick={HandleButtonClick}
+                >
+                  Download PDF
+                </button>
+              </div>
+            </div>
+          )}
         </div>
         <div className="flex justify-center mt-9">
           <div
@@ -224,7 +242,6 @@ const Certificate = () => {
                 ></p>
               </div>
               {/* bottom */}
-              {/* <div className="mx-4 mt-8 flex flex-col items-center "> */}
               <div className="flex justify-between  w-full mt-10">
                 <div className="flex flex-col gap-2 items-center">
                   <p
@@ -269,7 +286,6 @@ const Certificate = () => {
                   ></h4>
                 </div>
               </div>
-              {/* </div> */}
               <img
                 src="/assets/design.png"
                 alt="bottom design"
