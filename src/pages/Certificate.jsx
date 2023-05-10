@@ -85,7 +85,7 @@ const Certificate = () => {
           <div
             className={`${
               sidebar ? "block" : "hidden "
-            } origin-top-left scale-150 xl:scale-[1] border-r-[1px] max-w-[310px] min-w-[310px] lg:relative bg-gray-50 max-h-screen min-h-screen z-[100] absolute top-0 left-0 overflow-x-hidden`}
+            } origin-top-left scale-[2] md:scale-150 xl:scale-[1] border-r-[1px] max-w-[310px] min-w-[310px] lg:relative bg-gray-50 max-h-screen min-h-screen z-[100] absolute top-0 left-0 overflow-x-hidden`}
           >
             <div className="m-4 flex flex-col gap-4">
               <CustomInput
