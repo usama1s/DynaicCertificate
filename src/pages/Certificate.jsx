@@ -56,8 +56,8 @@ const Certificate = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setSidebar(window.innerWidth < 1024);
-      if (window.innerWidth > 1024) {
+      setSidebar(window.innerWidth < 1280);
+      if (window.innerWidth > 1280) {
         setSidebar(true);
       } else {
         setSidebar(false);
@@ -77,7 +77,7 @@ const Certificate = () => {
         onClick={() => {
           toggleSideBar();
         }}
-        className="lg:hidden block h-10 w-10 pt-2 pl-2 cursor-pointer"
+        className="xl:hidden block h-10 w-10 pt-2 pl-2 cursor-pointer"
       />
 
       <section className="flex flex-row px-1 relative w-full">
@@ -85,7 +85,7 @@ const Certificate = () => {
           <div
             className={`${
               sidebar ? "block" : "hidden "
-            } origin-top-left scale-150 lg:scale-[1] border-r-[1px] max-w-[310px] lg:relative bg-gray-50 max-h-screen min-h-screen z-[100] absolute top-0 left-0 overflow-x-hidden`}
+            } origin-top-left scale-150 xl:scale-[1] border-r-[1px] max-w-[310px] min-w-[310px] lg:relative bg-gray-50 max-h-screen min-h-screen z-[100] absolute top-0 left-0 overflow-x-hidden`}
           >
             <div className="m-4 flex flex-col gap-4">
               <CustomInput
