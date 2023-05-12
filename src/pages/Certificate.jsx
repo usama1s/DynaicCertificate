@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CustomInput from "../components/CustomInput";
 import TextAreaInput from "../components/TextAreaInput";
-import DeafultLogo from "../logo.svg";
+import DeafultLogo from "../logo.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 const html2pdf = require("html2pdf.js/dist/html2pdf.js");
 
@@ -262,7 +262,7 @@ const Certificate = () => {
                 ></p>
               </div>
               {/* bottom */}
-              <div className="flex justify-between  w-full mt-10">
+              <div className="flex justify-between items-end w-full mt-10">
                 <div className="flex flex-col gap-2 items-center">
                   <p
                     className="text-5xl text-c-gold font-jonathan"
