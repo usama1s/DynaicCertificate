@@ -24,7 +24,6 @@ const Certificate = () => {
   });
 
   const [sidebar, setSidebar] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
 
   const handleInputChange = (event) => {
     const { name, value, type } = event.target;
@@ -32,8 +31,6 @@ const Certificate = () => {
       type === "file" ? URL.createObjectURL(event.target.files[0]) : value;
     setFormState({ ...formState, [name]: newValue });
   };
-
-  let pdfName = formState.title + ".pdf";
 
   const HandleButtonClick = () => {
     const element = document.getElementById("certificate");
@@ -88,12 +85,21 @@ const Certificate = () => {
             } origin-top-left scale-[2] md:scale-150 xl:scale-[1] border-r-[1px] max-w-[310px] min-w-[310px] lg:relative bg-gray-50 max-h-screen min-h-screen z-[100] absolute top-0 left-0 overflow-x-hidden`}
           >
             <div className="m-4 flex flex-col gap-4">
+              <span
+                className="text-sm absolute right-5 cursor-pointer hover:text-red-600 underline z-50"
+                onClick={() => {
+                  setFormState({ ...formState, logo: DeafultLogo });
+                }}
+              >
+                Default
+              </span>
               <CustomInput
                 label="Logo"
                 type="file"
                 name="logo"
                 onChange={handleInputChange}
               />
+
               {/* <CustomInput
               label="Logo Sizes (width)"
               type="number"
